@@ -1,0 +1,33 @@
+{
+    "strict": {
+        "text-font-family": "iranyekan"
+    },
+    "components": {
+        "Text": {
+            "appearances": {
+                "default": {
+                    "mapping": {},
+                    "variantGroups": {
+                        "category": {
+                            "h1": {}
+                        }
+                    }
+                }
+            }
+        },
+        "Button": {
+            "meta": {},
+            "appearances": {
+                "filled": {
+                    "variantGroups": {
+                        "status": {
+                            "primary": {
+                                "textFontWeight": "bolder"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
