@@ -11,8 +11,11 @@ import { BottomNavigationAccessoriesShowcase } from "./bottomNavigation.componen
 declare const global: { HermesInternal: null | {} };
 
 const App = (): ReactElement => {
+  // set app RTL
+  console.log("RTL:", I18nManager.isRTL);
   I18nManager.allowRTL(false);
-  I18nManager.forceRTL(false);
+  I18nManager.forceRTL(true);
+
   const [theme, setTheme] = React.useState("light");
 
   const toggleTheme = () => {

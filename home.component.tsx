@@ -1,7 +1,8 @@
 import React from "react";
-import { SafeAreaView, StyleSheet, View, I18nManager, Alert, Switch } from "react-native";
-import { Button, Divider, Layout, TopNavigation, Text, Card } from "@ui-kitten/components";
+import { SafeAreaView, StyleSheet, View, I18nManager, Alert, Switch, Platform } from "react-native";
+import { Button, Divider, Layout, TopNavigation, Text, Card, CheckBox } from "@ui-kitten/components";
 import { ThemeContext } from "./theme-context";
+import { AppReloadService } from "./src/services/app-reload.service";
 
 const styles = StyleSheet.create({
   row: {
@@ -38,6 +39,16 @@ export const HomeScreen = ({ navigation }) => {
     );
   };
 
+  const toggleRtl = (): void => {
+    I18nManager.forceRTL(!I18nManager.isRTL);
+    I18nManager.allowRTL(I18nManager.isRTL);
+    Platform.OS !== "web" && AppReloadService.reload();
+  };
+
+  const renderRTLToggle = (): React.ReactElement => (
+    <CheckBox checked={I18nManager.isRTL} onChange={toggleRtl} text="RTL" />
+  );
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <TopNavigation title="Novler" alignment="center" />
@@ -45,6 +56,7 @@ export const HomeScreen = ({ navigation }) => {
         <Card style={styles.card} status="success">
           <Text>Success</Text>
           <Switch onValueChange={_onDirectionChange} value={isRTL} />
+          {renderRTLToggle()}
         </Card>
 
         <Card>
