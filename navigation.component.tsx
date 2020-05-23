@@ -21,7 +21,7 @@ const BottomTabBar = ({ navigation, state }): ReactNode => (
     <BottomNavigationTab title="کتابخانه" icon={BellIcon} />
     <BottomNavigationTab title="نقل‌قول" icon={EmailIcon} />
     <BottomNavigationTab title="خانه" icon={PersonIcon} />
-    <BottomNavigationTab title="Get" icon={PersonIcon} />
+    <BottomNavigationTab title="نقل‌قول‌ها" icon={PersonIcon} />
   </BottomNavigation>
 );
 

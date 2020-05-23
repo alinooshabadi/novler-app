@@ -28,7 +28,7 @@ export const DetailsScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <TopNavigation title="MyApp" alignment="center" leftControl={BackAction()} />
+      <TopNavigation title="Novler" alignment="center" leftControl={BackAction()} />
       <Divider />
       <Layout style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <View style={styles.row}>
