@@ -33,14 +33,14 @@ const Fetch = () => {
     </View>
   );
 
-  const renderItemFooter = (footerProps) => <Text {...footerProps}>By Wikipedia</Text>;
+  const renderItemFooter = (info, footerProps) => <Text {...footerProps}>{info.item.novel}</Text>;
 
   const renderItem = (info) => (
     <Card
       style={styles.item}
       status="basic"
       header={(headerProps) => renderItemHeader(headerProps, info)}
-      footer={renderItemFooter}
+      footer={(headerProps) => renderItemFooter(info, headerProps)}
     >
       <Text>{info.item.text}</Text>
     </Card>
@@ -51,28 +51,10 @@ const Fetch = () => {
       {data ? (
         <List contentContainerStyle={styles.contentContainer} data={data.quotes} renderItem={renderItem} />
       ) : (
-        <>loading</>
+        <Text>loading</Text>
       )}
     </View>
   );
-
-  // return (
-  //   <View style={styles.container}>
-  //     {data ? (
-  //       <>
-  //         {data.quotes.map((x) => {
-  //           <View>
-  //             {console.log(x.user)}
-  //             <Text>{x.text}</Text>
-  //             <Text>{data.user}</Text>
-  //           </View>;
-  //         })}
-  //       </>
-  //     ) : (
-  //       <Text>loading...</Text>
-  //     )}
-  //   </View>
-  // );
 };
 
 export default Fetch;
