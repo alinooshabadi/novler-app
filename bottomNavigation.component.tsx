@@ -1,12 +1,7 @@
-import React from "react";
+import { Card, List, Text } from "@ui-kitten/components";
+import React, { ReactNode, useState } from "react";
 import { StyleSheet, View } from "react-native";
-import useSWR from "swr";
-import { List, Card, Text } from "@ui-kitten/components";
-
-const fetchJSON = async (...args) => {
-  const res = await fetch(...args);
-  return await res.json();
-};
+import useSWR, { mutate } from "swr";
 
 const styles = StyleSheet.create({
   container: {
@@ -25,7 +20,16 @@ const styles = StyleSheet.create({
 });
 
 const Fetch = () => {
-  const { data } = useSWR("http://novler.com/api/quotes", fetchJSON);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const fetchJSON = async (...args) => {
+    console.log("fetch");
+    const res = await fetch(...args);
+    setRefreshing(false);
+    return await res.json();
+  };
+
+  const { data } = useSWR("http://novler.com/api/quotes/getrandom", fetchJSON);
 
   const renderItemHeader = (headerProps, info) => (
     <View {...headerProps}>
@@ -33,9 +37,15 @@ const Fetch = () => {
     </View>
   );
 
-  const renderItemFooter = (info, footerProps) => <Text {...footerProps}>{info.item.novel}</Text>;
+  const onRefresh = React.useCallback(() => {
+    console.log("refresh");
+    mutate("http://novler.com/api/quotes/getrandom");
+    setRefreshing(true);
+  }, [refreshing]);
 
-  const renderItem = (info) => (
+  const renderItemFooter = (info, footerProps): ReactNode => <Text {...footerProps}>{info.item.novel}</Text>;
+
+  const renderItem = (info): any => (
     <Card
       style={styles.item}
       status="basic"
@@ -49,7 +59,13 @@ const Fetch = () => {
   return (
     <View style={styles.container}>
       {data ? (
-        <List contentContainerStyle={styles.contentContainer} data={data.quotes} renderItem={renderItem} />
+        <List
+          contentContainerStyle={styles.contentContainer}
+          data={data.quotes}
+          onRefresh={onRefresh}
+          refreshing={refreshing}
+          renderItem={renderItem}
+        />
       ) : (
         <Text>loading</Text>
       )}

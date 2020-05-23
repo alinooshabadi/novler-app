@@ -1,8 +1,8 @@
+import { Button, Card, CheckBox, Layout, Text, TopNavigation } from "@ui-kitten/components";
 import React from "react";
-import { SafeAreaView, StyleSheet, View, I18nManager, Alert, Switch, Platform } from "react-native";
-import { Button, Divider, Layout, TopNavigation, Text, Card, CheckBox } from "@ui-kitten/components";
-import { ThemeContext } from "./theme-context";
-import { AppReloadService } from "./src/services/app-reload.service";
+import { Alert, I18nManager, Platform, SafeAreaView, StyleSheet, Switch, View } from "react-native";
+import { ThemeContext } from "../context/theme/theme-context";
+import { AppReloadService } from "../services/app-reload.service";
 
 const styles = StyleSheet.create({
   row: {
