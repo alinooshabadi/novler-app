@@ -1,4 +1,4 @@
-package com.myapp;
+package com.novler;
 
 import android.app.Application;
 import android.content.Context;
