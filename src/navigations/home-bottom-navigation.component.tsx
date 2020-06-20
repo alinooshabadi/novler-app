@@ -9,6 +9,7 @@ export const HomeBottomNavigation = (props): React.ReactElement => {
 
   return (
     <BottomNavigation appearance="default" selectedIndex={props.state.index} onSelect={onSelect}>
+      <BottomNavigationTab title="خانه" icon={BookIcon} />
       <BottomNavigationTab title="کتابخانه" icon={BookIcon} />
       <BottomNavigationTab title="نقل‌قول" icon={ListIcon} />
       <BottomNavigationTab title="نقل‌قول‌ها" icon={StarIcon} />

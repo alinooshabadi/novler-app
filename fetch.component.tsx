@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Fetch = () => {
+const Fetch = ({ navigation }) => {
   const [refreshing, setRefreshing] = useState(false);
 
   const fetchJSON = async (...args) => {
@@ -43,14 +43,26 @@ const Fetch = () => {
     setRefreshing(true);
   }, [refreshing]);
 
-  const renderItemFooter = (info, footerProps): ReactNode => <Text {...footerProps}>{info.item.novel}</Text>;
+  const renderItemFooter = (info, navigation, footerProps): any => (
+    <Text
+      {...footerProps}
+      onPress={() => {
+        navigation.push("Book", {
+          itemId: info.item?.novelNovlerId,
+        });
+      }}
+    >
+      {console.log(navigation)}
+      {info.item.novel}
+    </Text>
+  );
 
   const renderItem = (info): any => (
     <Card
       style={styles.item}
       status="basic"
       header={(headerProps) => renderItemHeader(headerProps, info)}
-      footer={(headerProps) => renderItemFooter(info, headerProps)}
+      footer={(headerProps) => renderItemFooter(info, navigation, headerProps)}
     >
       <Text>{info.item.text}</Text>
     </Card>

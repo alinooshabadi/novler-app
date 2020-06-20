@@ -3,7 +3,7 @@ import { ApplicationProvider, IconRegistry } from "@ui-kitten/components";
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import React, { ReactElement } from "react";
 import { I18nManager, StatusBar } from "react-native";
-import { AppNavigator } from "../navigations/navigation.component";
+import { AppNavigator } from "../navigations/app-navigator.component";
 import { ThemeContext } from "../context/theme/theme-context";
 import { AppContextProvider } from "../context/appContetxtProvider";
 import { default as mytheme } from "../../theme.json";

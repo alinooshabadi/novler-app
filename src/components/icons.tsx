@@ -37,5 +37,6 @@ export const StarIcon = (style: ImageStyle): IconElement => <Icon {...style} nam
 export const StarOutlineIcon = (style: ImageStyle): IconElement => <Icon {...style} name="star-outline" />;
 
 export const TrashIcon = (style: ImageStyle): IconElement => <Icon {...style} name="trash" />;
-
+export const HeartIcon = (style: ImageStyle): IconElement => <Icon {...style} name="heart" />;
+export const MessageCircleIcon = (style: ImageStyle): IconElement => <Icon {...style} name="message-circle" />;
 export const Auth = (style: ImageStyle): IconElement => <Icon {...style} pack="app" name="auth" />;
