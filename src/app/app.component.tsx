@@ -8,6 +8,8 @@ import { ThemeContext } from "../context/theme/theme-context";
 import { AppContextProvider } from "../context/appContetxtProvider";
 import { default as mytheme } from "../../theme.json";
 import { AppIconsPack } from "./app-icons-pack";
+import { AuthProvider } from "../providers/auth.provider";
+import { Routes } from "../routes";
 
 declare const global: { HermesInternal: null | {} };
 
@@ -27,12 +29,15 @@ const App = (): ReactElement => {
     <>
       <IconRegistry icons={[EvaIconsPack, AppIconsPack]} />
       <AppContextProvider>
-        <ThemeContext.Provider value={{ theme, toggleTheme }}>
-          <ApplicationProvider {...eva} theme={{ ...eva[theme], ...mytheme }}>
-            <StatusBar backgroundColor="#fff" barStyle="dark-content" />
-            <AppNavigator />
-          </ApplicationProvider>
-        </ThemeContext.Provider>
+        <AuthProvider>
+          <ThemeContext.Provider value={{ theme, toggleTheme }}>
+            <ApplicationProvider {...eva} theme={{ ...eva[theme], ...mytheme }}>
+              <StatusBar backgroundColor="#fff" barStyle="dark-content" />
+              <Routes />
+              {/* <AppNavigator /> */}
+            </ApplicationProvider>
+          </ThemeContext.Provider>
+        </AuthProvider>
       </AppContextProvider>
     </>
   );

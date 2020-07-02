@@ -27,7 +27,7 @@ module.exports = {
     "jsx-a11y/href-no-hash": "off",
     "jsx-a11y/anchor-is-valid": ["off"],
     "@typescript-eslint/explicit-function-return-type": [
-      "error",
+      "off",
       {
         allowTypedFunctionExpressions: true,
         allowExpressions: true,
