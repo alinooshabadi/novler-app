@@ -12,7 +12,8 @@ export const HomeBottomNavigation = (props): React.ReactElement => {
       <BottomNavigationTab title="خانه" icon={BookIcon} />
       <BottomNavigationTab title="کتابخانه" icon={BookIcon} />
       <BottomNavigationTab title="نقل‌قول" icon={ListIcon} />
-      <BottomNavigationTab title="نقل‌قول‌ها" icon={StarIcon} />
+      {/* <BottomNavigationTab title="نقل‌قول‌ها" icon={StarIcon} /> */}
+      <BottomNavigationTab title="رندوم" icon={BookIcon} />
     </BottomNavigation>
   );
 };

@@ -3,15 +3,12 @@ import { ApplicationProvider, IconRegistry } from "@ui-kitten/components";
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import React, { ReactElement } from "react";
 import { I18nManager, StatusBar } from "react-native";
-import { AppNavigator } from "../navigations/app-navigator.component";
-import { ThemeContext } from "../context/theme/theme-context";
-import { AppContextProvider } from "../context/appContetxtProvider";
 import { default as mytheme } from "../../theme.json";
-import { AppIconsPack } from "./app-icons-pack";
+import { AppContextProvider } from "../context/appContetxtProvider";
+import { ThemeContext } from "../context/theme/theme-context";
 import { AuthProvider } from "../providers/auth.provider";
 import { Routes } from "../routes";
-
-declare const global: { HermesInternal: null | {} };
+import { AppIconsPack } from "./app-icons-pack";
 
 const App = (): ReactElement => {
   // set app RTL
