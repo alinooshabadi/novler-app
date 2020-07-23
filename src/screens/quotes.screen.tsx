@@ -40,7 +40,6 @@ export const QuotesScreen: React.FC<Props> = ({ navigation }) => {
 
   const onRefresh = React.useCallback(() => {
     console.log("refresh");
-    // mutate("http://novler.com/api/quotes/getrandom");
     setRefreshing(true);
   }, [refreshing]);
 
