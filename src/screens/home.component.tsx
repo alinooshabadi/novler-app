@@ -8,9 +8,10 @@ export const HomeScreen = ({ navigation }): ReactNode => {
   const themeContext = useContext(ThemeContext);
   const { logout } = useContext(AuthContext);
 
-  const navigateDetails = (): void => {
-    navigation?.navigate("Details");
-  };
+  // const navigateDetails = (): void => {
+  //   navigation?.navigate("Details");
+  // };
+
   const navigateList = (): void => {
     navigation?.navigate("List");
   };
