@@ -34,5 +34,6 @@ export const Routes: React.FC<{}> = ({}) => {
     );
   }
 
-  return <NavigationContainer>{user ? <HomeNavigator /> : <AuthStack />}</NavigationContainer>;
+  // return <NavigationContainer>{user ? <HomeNavigator /> : <AuthStack />}</NavigationContainer>;
+  return <NavigationContainer>{user ? <HomeNavigator /> : <HomeNavigator />}</NavigationContainer>;
 };

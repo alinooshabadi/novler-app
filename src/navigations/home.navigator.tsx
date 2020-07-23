@@ -6,6 +6,7 @@ import { HomeScreen } from "../screens/home.component";
 import { BookNavigator } from "./book.navigator";
 import { HomeBottomNavigation } from "./home-bottom-navigation.component";
 import { LibraryNavigator } from "./library.navigator";
+import { QuotesScreen } from "./../screens/quotes.screen";
 
 const BottomTab = createBottomTabNavigator<RouteParamList>();
 
@@ -31,6 +32,7 @@ export const HomeNavigator = (): React.ReactElement => (
     <BottomTab.Screen name="Home" component={HomeScreen} />
     <BottomTab.Screen name="List" component={LibraryNavigator} />
     <BottomTab.Screen name="Fetch" component={Fetch} />
-    <BottomTab.Screen name="Book" component={BookNavigator} />
+    {/* <BottomTab.Screen name="Book" component={BookNavigator} /> */}
+    <BottomTab.Screen name="Quote" component={QuotesScreen} />
   </BottomTab.Navigator>
 );
