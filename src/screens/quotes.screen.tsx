@@ -1,6 +1,6 @@
 import { Card, List, Text } from "@ui-kitten/components";
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, ListRenderItem, ListRenderItemInfo } from "react-native";
 import { useService } from "../hooks/useService";
 import { Quote } from "../models/quote";
 import { QuoteServices } from "../services/quote-serivice";
@@ -32,39 +32,43 @@ export const QuotesScreen: React.FC<Props> = ({ navigation }) => {
     setRefreshing(false);
   }, [data.status]);
 
-  const renderItemHeader = (headerProps, info) => (
+  const renderItemHeader = (headerProps, quote: Quote) => (
     <View {...headerProps}>
-      <Text category="h6">{info.item.user}</Text>
+      {console.log("quote", quote)}
+
+      <Text category="h6">{quote.novel.title}</Text>
     </View>
   );
 
   const onRefresh = React.useCallback(() => {
     console.log("refresh");
+    // mutate("http://novler.com/api/quotes/getrandom");
     setRefreshing(true);
   }, [refreshing]);
 
-  const renderItemFooter = (info: Quote, navigation, footerProps): any => (
+  const renderItemFooter = (quote: Quote, navigation, footerProps): any => (
     <Text
       {...footerProps}
       onPress={() => {
         navigation.push("Book", {
-          itemId: info.novel_Id,
+          itemId: quote.id,
         });
       }}
     >
-      {console.log(navigation)}
-      {info.}
+      {quote.novel.title}
     </Text>
   );
 
-  const renderItem = (quote: Quote): any => (
+  const renderItem = (quote: ListRenderItemInfo<Quote>) => (
     <Card
       style={styles.item}
       status="basic"
-      header={(headerProps) => renderItemHeader(headerProps, quote)}
-      footer={(headerProps) => renderItemFooter(quote, navigation, headerProps)}
+      header={(headerProps) => renderItemHeader(headerProps, quote.item)}
+      footer={(headerProps) => renderItemFooter(quote.item, navigation, headerProps)}
     >
-      <Text>{quote.text}</Text>
+      {console.log("quote-b", quote)}
+
+      <Text>{quote.item.text}</Text>
     </Card>
   );
 
