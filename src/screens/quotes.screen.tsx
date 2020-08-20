@@ -1,13 +1,11 @@
 import { Card, List, Text } from "@ui-kitten/components";
-import React, { useState, useEffect } from "react";
-import { StyleSheet, View, ListRenderItem, ListRenderItemInfo } from "react-native";
+import React, { useEffect, useState } from "react";
+import { ListRenderItemInfo, StyleSheet, View } from "react-native";
 import { useService } from "../hooks/useService";
 import { Quote } from "../models/quote";
-import { QuoteServices } from "../services/quote-serivice";
+import { QuoteServices } from "../services/quote-service";
 
-interface Props {}
-
-export const QuotesScreen: React.FC<Props> = ({ navigation }) => {
+export const QuotesScreen: React.FC<{}> = ({ navigation }) => {
   const data = useService<Quote[]>(QuoteServices.random());
   const [refreshing, setRefreshing] = useState(false);
 
@@ -34,8 +32,6 @@ export const QuotesScreen: React.FC<Props> = ({ navigation }) => {
 
   const renderItemHeader = (headerProps, quote: Quote) => (
     <View {...headerProps}>
-      {console.log("quote", quote)}
-
       <Text category="h6">{quote.novel.title}</Text>
     </View>
   );
@@ -66,8 +62,6 @@ export const QuotesScreen: React.FC<Props> = ({ navigation }) => {
       header={(headerProps) => renderItemHeader(headerProps, quote.item)}
       footer={(headerProps) => renderItemFooter(quote.item, navigation, headerProps)}
     >
-      {console.log("quote-b", quote)}
-
       <Text>{quote.item.text}</Text>
     </Card>
   );
