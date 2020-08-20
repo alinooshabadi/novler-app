@@ -1,13 +1,11 @@
 import { Card, List, Text } from "@ui-kitten/components";
-import React, { useState, useEffect } from "react";
-import { StyleSheet, View } from "react-native";
+import React, { useEffect, useState } from "react";
+import { ListRenderItemInfo, StyleSheet, View } from "react-native";
 import { useService } from "../hooks/useService";
 import { Quote } from "../models/quote";
-import { QuoteServices } from "../services/quote-serivice";
+import { QuoteServices } from "../services/quote-service";
 
-interface Props {}
-
-export const QuotesScreen: React.FC<Props> = ({ navigation }) => {
+export const QuotesScreen: React.FC<{}> = ({ navigation }) => {
   const data = useService<Quote[]>(QuoteServices.random());
   const [refreshing, setRefreshing] = useState(false);
 
@@ -32,39 +30,39 @@ export const QuotesScreen: React.FC<Props> = ({ navigation }) => {
     setRefreshing(false);
   }, [data.status]);
 
-  const renderItemHeader = (headerProps, info) => (
+  const renderItemHeader = (headerProps, quote: Quote) => (
     <View {...headerProps}>
-      <Text category="h6">{info.item.user}</Text>
+      <Text category="h6">{quote.novel.title}</Text>
     </View>
   );
 
   const onRefresh = React.useCallback(() => {
     console.log("refresh");
+    // mutate("http://novler.com/api/quotes/getrandom");
     setRefreshing(true);
   }, [refreshing]);
 
-  const renderItemFooter = (info: Quote, navigation, footerProps): any => (
+  const renderItemFooter = (quote: Quote, navigation, footerProps): any => (
     <Text
       {...footerProps}
       onPress={() => {
         navigation.push("Book", {
-          itemId: info.novel_Id,
+          itemId: quote.id,
         });
       }}
     >
-      {console.log(navigation)}
-      {info.}
+      {quote.novel.title}
     </Text>
   );
 
-  const renderItem = (quote: Quote): any => (
+  const renderItem = (quote: ListRenderItemInfo<Quote>) => (
     <Card
       style={styles.item}
       status="basic"
-      header={(headerProps) => renderItemHeader(headerProps, quote)}
-      footer={(headerProps) => renderItemFooter(quote, navigation, headerProps)}
+      header={(headerProps) => renderItemHeader(headerProps, quote.item)}
+      footer={(headerProps) => renderItemFooter(quote.item, navigation, headerProps)}
     >
-      <Text>{quote.text}</Text>
+      <Text>{quote.item.text}</Text>
     </Card>
   );
 

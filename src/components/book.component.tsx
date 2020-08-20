@@ -4,7 +4,7 @@ import { Button, Input, Layout, StyleService, Text, useStyleSheet } from "@ui-ki
 import { RateBar } from "./rate-bar.component";
 import { CommentList } from "./comment-list.component";
 import useSWR from "swr";
-import Book from "../models/book";
+import Book from "../models/novel";
 import { StackNavigationProp, StackScreenProps } from "@react-navigation/stack";
 import { RouteNavProps } from "../types/routeParamList";
 
