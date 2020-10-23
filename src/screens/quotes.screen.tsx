@@ -65,7 +65,6 @@ export const QuotesScreen: React.FC<{}> = ({ navigation }) => {
       <Text>{quote.item.text}</Text>
     </Card>
   );
-
   return (
     <View style={styles.container}>
       {data.status === "loaded" ? (
